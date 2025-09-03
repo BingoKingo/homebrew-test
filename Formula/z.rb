@@ -14,9 +14,8 @@ class Z < Formula
 
   bottle do
     root_url "https://ghcr.io/v2/bingokingo/test"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "f8e5b91d121df4112f1180d8ce5f581a936c22a54cf637e327c5508b8e55e10e"
-    sha256 cellar: :any_skip_relocation, ventura:       "cede6d68141c5dd6b5abb657e9838d6f798a5d87ca7160a7c79c8d9ab09d07d9"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "b5260bd8651e1101c65df0481e59e07dfd03c1dbdf877a0b707f252980fce5e2"
+    rebuild 1
+    sha256 cellar: :any_skip_relocation, x86_64_linux: "b837a2cbff14bf41eb0687c9c7c2d90f799d5cecc3cd09ac1bf996f78f594abe"
   end
 
   def install
