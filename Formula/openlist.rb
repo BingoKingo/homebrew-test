@@ -7,9 +7,9 @@ class Openlist < Formula
   head "https://github.com/OpenListTeam/OpenList.git", branch: "main"
 
   bottle do
-    root_url "https://ghcr.io/v2/bingokingo/homebrew"
-    sha256 cellar: :any,                 arm64_tahoe: "edc0b6734b821adada1f98e7275ca6bd0cd52001800a0a6403b5f077dddafab0"
-    sha256 cellar: :any_skip_relocation, arm64_linux: "d8834980c3236975e9c3d00c43830e92bc1cd1469178d0b6de633dc206eaef7f"
+    root_url "https://ghcr.io/v2/bingokingo/test"
+    rebuild 1
+    sha256 cellar: :any_skip_relocation, x86_64_linux: "f495e333cd7fc7ca2d1d46969b747d99685cf6f48d5e069cc0ecf442a612fda3"
   end
 
   depends_on "glib" => :build

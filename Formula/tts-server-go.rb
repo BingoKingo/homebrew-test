@@ -9,6 +9,12 @@ class TtsServerGo < Formula
     skip
   end
 
+  bottle do
+    root_url "https://ghcr.io/v2/bingokingo/homebrew"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe: "954fb989a08131dd7c92cc9648a955f3d9ce4a9196189a775da0735941bc662c"
+    sha256 cellar: :any_skip_relocation, arm64_linux: "c57fe7a7ec94b9ce57e50405e690ec0dbc043a0b87793174bd2786bae36c5562"
+  end
+
   # deprecate! date: "2023-02-17", because: :discontinued
   depends_on "go" => :build
 
@@ -23,6 +29,17 @@ class TtsServerGo < Formula
   end
 
   test do
-    system bin/"tts-server-go"
+    system bin/"tts-server-go", "--help"
+    port = 1233
+    pid = fork do
+      exec bin/"tts-server-go", "-port", port.to_s
+    end
+    sleep 3
+    begin
+      require "socket"
+      TCPSocket.new("localhost", port).close
+    end
+    Process.kill("TERM", pid)
+    Process.wait(pid)
   end
 end
